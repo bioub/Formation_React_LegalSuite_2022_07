@@ -1,25 +1,47 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 
-class ExHelloworld extends Component {
-  state = {
+// class ExHelloworld extends Component {
+//   state = {
+//     name: 'Romain'
+//   };
+//   handleInput = (event) => {
+//     this.setState({
+//       name: event.target.value,
+//     });
+//   };
+//   render() {
+//     const { name } = this.state;
+//     return (
+//       <div className="ExHelloworld">
+//         <div>
+//           Name : <input value={name} onInput={this.handleInput} />
+//         </div>
+//         <p>
+//           Hello <span>{name}</span> !
+//         </p>
+//       </div>
+//     );
+//   }
+// }
 
-  };
-  handleInput = (event) => {
+function ExHelloworld() {
+  console.log('ExHelloworld called');
+  const [name, setName] = useState('Romain')
+  // const handleInput = (e) => setName(e.target.value);
+  // function handleInput(e) {
+  //   setName(e.target.value);
+  // }
 
-  };
-  render() {
-    const {  } = this.state;
-    return (
-      <div className="ExHelloworld">
-        <div>
-          Name : <input onInput={this.handleInput} />
-        </div>
-        <p>
-          Hello <span></span> !
-        </p>
+  return (
+    <div className="ExHelloworld">
+      <div>
+        Name : <input value={name} onInput={(e) => setName(e.target.value)} />
       </div>
-    );
-  }
+      <p>
+        Hello <span>{name}</span> !
+      </p>
+    </div>
+  );
 }
 
 export default ExHelloworld;
