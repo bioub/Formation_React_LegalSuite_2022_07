@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Hello from "./Hello";
+import Select from 'react-select';
+import Clock from "./Clock";
 
 function App() {
+  console.log('App called');
+  const name = "Romain";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Hello et React-Select (hello world, introducing jsx, component and props)</h2>
+      <Hello />
+      <Hello name="Romain" age={36} />
+      <Hello name={name} />
+      {React.createElement(Hello, { name: 'Romain' })}
+      <Select options={[{label: 'ABC', value: 'abc'}]} />
+      <h2>Clock (state, lifecycle)</h2>
+      <Clock />
     </div>
   );
 }
