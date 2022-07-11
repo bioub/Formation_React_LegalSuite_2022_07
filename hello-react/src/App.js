@@ -2,6 +2,9 @@ import React from "react";
 import Hello from "./Hello";
 import Select from 'react-select';
 import Clock from "./Clock";
+import LikeButton from "./LikeButton";
+import ExHelloworld from "./ExHelloWorld";
+import ExMultiStateButton from "./ExMultiStateButton";
 
 function App() {
   console.log('App called');
@@ -16,6 +19,16 @@ function App() {
       <Select options={[{label: 'ABC', value: 'abc'}]} />
       <h2>Clock (state, lifecycle)</h2>
       <Clock />
+
+      {/* Composant non-controllé (le state est dans LikeButton) */}
+      <LikeButton />
+
+      {/* Composant controllé (le state est dans App et passé à LikeButton via une prop) */}
+      {/* <LikeButton count={count} /> */}
+
+      <h2>Exercices</h2>
+      <ExHelloworld />
+      <ExMultiStateButton items={['Romain', 'Jean', 'Eric']} />
     </div>
   );
 }
