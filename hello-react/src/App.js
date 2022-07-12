@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hello from './Hello';
 import ReactSelect from 'react-select';
 import Clock from './Clock';
@@ -8,10 +8,12 @@ import ExMultiStateButton from './ExMultiStateButton';
 import Select from './Select';
 import UserForm from './UserForm';
 import Button from './Button';
+import ClockWithControls from './ClockWithControls';
 
 function App() {
   console.log('App called');
-  const name = 'Romain';
+  // const name = 'Romain';
+  const [name, setName] = useState('Romain');
   const propsHello = {
     name: 'Romain',
     age: 36,
@@ -44,6 +46,8 @@ function App() {
 
       <h2>Select (conditional rendering, list and keys)</h2>
       <Select
+        selected={name}
+        onSelected={(name) => setName(name)}
         options={[
           { value: 'Romain', label: 'Romain' },
           { value: 'Jean', label: 'Jean' },
@@ -59,6 +63,9 @@ function App() {
         <b>Text</b>
         <b>Text</b>
       </Button>
+
+      <h2>ClockWithControls (composition, lifecycle)</h2>
+      <ClockWithControls />
     </div>
   );
 }

@@ -11,7 +11,7 @@ import { useState } from "react";
 //   };
 
 //   handleChange = (event) => {
-//     const value = event.target.type !== 'checked' ? event.target.value : event.target.checked;
+//     const value = event.target.type !== 'checkbox' ? event.target.value : event.target.checked;
 //     this.setState({
 //       [event.target.name]: value,
 //     });
@@ -66,7 +66,7 @@ function UserForm() {
   })
 
   const handleChange = (event) => {
-    const value = event.target.type !== 'checked' ? event.target.value : event.target.checked;
+    const value = event.target.type !== 'checkbox' ? event.target.value : event.target.checked;
     setUser({
       ...user,
       [event.target.name]: value,
