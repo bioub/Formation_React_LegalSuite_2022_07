@@ -5,12 +5,16 @@ import { Component, useEffect, useState } from 'react';
 //   state = {
 //     now: new Date(),
 //     format: 'HH:mm:ss'
+//     options: {
+//       delay: 1000,
+//       color: 'green'
+//     }
 //   };
 
 //   componentDidMount() {
 //     setInterval(() => {
 //       this.setState({
-//         // ne passer que les changements
+//         // ne passer que les changements au premier niveau
 //         now: new Date(),
 //       });
 //     }, 1000);

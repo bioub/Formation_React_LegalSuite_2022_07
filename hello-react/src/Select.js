@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import classNames from 'classnames';
+import styles from './Select.module.scss';
 
 class Select extends Component {
   state = {
@@ -25,21 +26,21 @@ class Select extends Component {
 
     // const menuItems = [];
     // for (const option of options) {
-    //   menuItems.push(<div className="menuItem">{option.label}</div>);
+    //   menuItems.push(<div key={option.value} className="menuItem">{option.label}</div>);
     // }
 
-    // const menuItems = options.map((option) => <div className="menuItem">{option.label}</div>);
+    // const menuItems = options.map((option) => <div key={option.value} className="menuItem">{option.label}</div>);
 
     return (
-      <div className="Select" onClick={this.handleClick}>
-        <div className="selected">{selected.label}</div>
+      <div className={styles.container} onClick={this.handleClick}>
+        <div className={styles.selected}>{selected.label}</div>
         {/* <div className={classNames('menu', {hidden: true})}> */}
         {menuOpen && (
-          <div className="menu">
+          <div className={styles.menu}>
             {options.map((option) => (
               <div
                 key={option.value}
-                className="menuItem"
+                className={styles.item}
                 onClick={() => this.handleClickItem(option)}
               >
                 {option.label}
