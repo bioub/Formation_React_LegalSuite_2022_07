@@ -22,12 +22,12 @@ import { Component, useState } from 'react';
 //   }
 // }
 
-function ExMultiStateButton({ items }) {
-  const [value, setValue] = useState(items[0] ?? '')
+function ExMultiStateButton({ items, value, onSelected }) {
+  // const [value, setValue] = useState(items[0] ?? '')
 
   const handleClick = () => {
     const currentIndex = items.indexOf(value);
-    setValue(items[(currentIndex + 1) % items.length]);
+    onSelected(items[(currentIndex + 1) % items.length]);
   };
 
   return (
