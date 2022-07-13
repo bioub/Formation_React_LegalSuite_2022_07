@@ -1,0 +1,20 @@
+$borderColor: gray;
+
+.container {
+  user-select: none;
+  cursor: pointer;
+}
+
+.selected {
+  padding: 4px;
+  border: 1px solid $borderColor;
+}
+
+.menu {
+  margin-top: 3px;
+  border: 1px solid $borderColor;
+}
+
+.item {
+  padding: 4px;
+}
