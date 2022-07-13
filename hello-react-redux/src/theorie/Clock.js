@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from 'react';
+import { Component, useEffect, useRef, useState } from 'react';
 import { format as formatDate } from 'date-fns';
 
 export class ClockClassVersion extends Component {
@@ -41,6 +41,7 @@ export class ClockClassVersion extends Component {
     return (
       <div className="Clock">
         Il est {formatDate(now, format)} au format {format}
+        <button onClick={() => clearInterval(this._interval)}>Stop</button>
       </div>
     )
   }
@@ -61,16 +62,16 @@ function Clock({ format = 'HH:mm:ss', delay = 1000 }) {
   // const format = 'HH:mm:ss';
   const [now, setNow] = useState(new Date()); // 1er appel (state[0])
   // const [format] = useState('HH:mm:ss'); // 2e appel (state[1])
-
+  const _interval = useRef();
   useEffect(() => {
     // componentDidMount + componentDidUpdate (si delay change)
-    const _interval = setInterval(() => {
+    _interval.current = setInterval(() => {
       setNow(new Date());
     }, delay);
 
     return () => {
       // componentWillUnmount + componentWillUpdate (si delay change)
-      clearInterval(_interval);
+      clearInterval(_interval.current);
     };
   }, [delay]);
 
@@ -81,6 +82,7 @@ function Clock({ format = 'HH:mm:ss', delay = 1000 }) {
   return (
     <div className="Clock">
       Il est {formatDate(now, format)} au format {format}
+      <button onClick={() => clearInterval(_interval.current)}>Stop</button>
     </div>
   );
 }

@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "hello-react-redux"
+		},
+		{
+			"path": "react-communication"
 		}
 	],
 	"settings": {}

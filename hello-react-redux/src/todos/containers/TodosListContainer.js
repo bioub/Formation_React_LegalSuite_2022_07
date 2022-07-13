@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { todosDelete } from "../../store/actions";
+import { todosDelete, todosFetch, todosFetchSuccess } from "../../store/actions";
 import { todosSelector } from "../../store/selectors";
+import { fetchTodos } from "../api";
 import TodosList from "../components/TodosList";
 
 function TodosListContainer() {
@@ -10,6 +12,16 @@ function TodosListContainer() {
   const handleDelete = (todo) => {
     dispatch(todosDelete(todo));
   };
+
+  useEffect(() => {
+    dispatch(todosFetch());
+
+    return () => {};
+  }, []);
+
+  if (todos.loading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <TodosList todos={todos.items} onDelete={handleDelete} />
