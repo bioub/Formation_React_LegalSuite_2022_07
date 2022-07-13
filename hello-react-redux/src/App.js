@@ -9,7 +9,7 @@ import Select from './theorie/Select';
 import UserForm from './theorie/UserForm';
 import Button from './theorie/Button';
 import ClockWithControls from './theorie/ClockWithControls';
-import Todos from './todos/Todos';
+import Todos from './todos/components/Todos';
 import LikeButtonContainer from './theorie/LikeButtonContainer';
 
 function App() {
