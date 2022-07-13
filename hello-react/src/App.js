@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactSelect from 'react-select';
 import Hello from './theorie/Hello';
 import Clock from './theorie/Clock';
-import LikeButton from './theorie/LikeButton';
+import LikeButtonUncontrolled, {LikeButtonControlled} from './theorie/LikeButton';
 import ExHelloworld from './theorie/ExHelloWorld';
 import ExMultiStateButton from './theorie/ExMultiStateButton';
 import Select from './theorie/Select';
@@ -19,6 +19,7 @@ function App() {
     name: 'Romain',
     age: 36,
   };
+  const [count, setCount] = useState(0);
   return (
     <div className="App">
       <h2>
@@ -44,10 +45,15 @@ function App() {
       <Clock />
 
       {/* Composant non-controllé (le state est dans LikeButton) */}
-      <LikeButton />
+      <h2>LikeButton (controlled vs uncontrolled component, lifting state up</h2>
+      <LikeButtonUncontrolled />
+      <LikeButtonUncontrolled />
+      <LikeButtonUncontrolled />
 
       {/* Composant controllé (le state est dans App et passé à LikeButton via une prop) */}
-      {/* <LikeButton count={count} /> */}
+      <LikeButtonControlled count={count} onIncrement={setCount} />
+      <LikeButtonControlled count={count} onIncrement={setCount} />
+      <LikeButtonControlled count={count} onIncrement={setCount} />
 
       <h2 className="menu">Exercices</h2>
       <ExHelloworld />

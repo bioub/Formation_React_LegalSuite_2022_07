@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 // pour récupérer this (bind in constructor)
-// class LikeButton extends Component {
+// class LikeButtonUncontrolled extends Component {
 //   constructor(props) {
 //     super(props);
 //     this.state = {
@@ -14,14 +14,14 @@ import { Component } from "react";
 //     console.log(this); // this vaut undefined si pas de précaution
 //   }
 //   render() {
-//     console.log('LikeButton called');
+//     console.log('LikeButtonUncontrolled called');
 //     const { count } = this.state;
-//     return <button className="LikeButton" onClick={this.handleClick}>{count}</button>;
+//     return <button className="LikeButtonUncontrolled" onClick={this.handleClick}>{count}</button>;
 //   }
 // }
 
 // bind in render
-// class LikeButton extends Component {
+// class LikeButtonUncontrolled extends Component {
 //   constructor(props) {
 //     super(props);
 //     this.state = {
@@ -33,14 +33,14 @@ import { Component } from "react";
 //     console.log(this); // this vaut undefined si pas de précaution
 //   }
 //   render() {
-//     console.log('LikeButton called');
+//     console.log('LikeButtonUncontrolled called');
 //     const { count } = this.state;
-//     return <button className="LikeButton" onClick={this.handleClick.bind(this)}>{count}</button>;
+//     return <button className="LikeButtonUncontrolled" onClick={this.handleClick.bind(this)}>{count}</button>;
 //   }
 // }
 
 // arrow function in render
-// class LikeButton extends Component {
+// class LikeButtonUncontrolled extends Component {
 //   constructor(props) {
 //     super(props);
 //     this.state = {
@@ -52,14 +52,14 @@ import { Component } from "react";
 //     console.log(this); // this vaut undefined si pas de précaution
 //   }
 //   render() {
-//     console.log('LikeButton called');
+//     console.log('LikeButtonUncontrolled called');
 //     const { count } = this.state;
-//     return <button className="LikeButton" onClick={() => this.handleClick()}>{count}</button>;
+//     return <button className="LikeButtonUncontrolled" onClick={() => this.handleClick()}>{count}</button>;
 //   }
 // }
 
 // Arrow function as class property (ES2022)
-class LikeButton extends Component {
+class LikeButtonUncontrolled extends Component {
   state = {
     count: 0,
   };
@@ -70,12 +70,27 @@ class LikeButton extends Component {
     this.setState({
       count: count + 1,
     });
-  }
+  };
   render() {
-    console.log('LikeButton called');
+    console.log('LikeButtonUncontrolled called');
     const { count } = this.state;
-    return <button className="LikeButton" onClick={this.handleClick}>{count}</button>;
+    return (
+      <button className="LikeButtonUncontrolled" onClick={this.handleClick}>
+        {count}
+      </button>
+    );
   }
 }
 
-export default LikeButton;
+export function LikeButtonControlled({ count = 0, onIncrement = () => {} }) {
+  const handleClick = () => {
+    onIncrement(count + 1);
+  };
+  return (
+    <button className="LikeButtonControlled" onClick={handleClick}>
+      {count}
+    </button>
+  );
+}
+
+export default LikeButtonUncontrolled;
